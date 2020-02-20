@@ -25,7 +25,7 @@ clean:
 	@rm -rf *.egg-info/ build/ dist/ rfpython_cache.sqlite
 
 format:
-	isort -rc .
+	# isort -rc .
 	black .
 
 black:

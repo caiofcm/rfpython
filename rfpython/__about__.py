@@ -1,4 +1,4 @@
-__version__ = "3.5.3"
+__version__ = "0.0.1"
 __author__ = "Caio Marcello"
 __author_email__ = "caiocuritiba@gmail.com"
 __website__ = "https://github.com/caiofcm/rfpython"
