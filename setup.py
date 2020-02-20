@@ -22,9 +22,7 @@ setup(
     url=about["__website__"],
     license=about["__license__"],
     platforms="any",
-    install_requires=[
-
-    ],
+    install_requires=[],
     python_requires=">=3",
     classifiers=[
         about["__status__"],
@@ -36,9 +34,5 @@ setup(
         "Topic :: Scientific/Engineering",
         "Topic :: Utilities",
     ],
-    entry_points={
-        "console_scripts": [
-            "rfpython = rfpython:main",
-        ]
-    },
+    entry_points={"console_scripts": ["rfpython = rfpython:main"]},
 )

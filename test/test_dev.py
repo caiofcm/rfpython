@@ -1,20 +1,18 @@
-import pytest
 import rfpython
 
+
 def test_same_folder():
-
-    rfpython.run('dummy.py', 'hello2')
-
+    rfpython.run("dummy.py", "hello2")
     pass
+
 
 def test_other_folder():
-
-    rfpython.run('crap/dummy.py', 'hello2')
-
+    rfpython.run("crap/dummy.py", "hello2")
     pass
 
+
 def test_dir_logic():
-    rfpython.dir_logic('crap/dummy.py')
+    rfpython.dir_logic("crap/dummy.py")
     return
 
 
