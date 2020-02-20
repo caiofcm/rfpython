@@ -1,5 +1,5 @@
-__version__ = "0.0.1"
-__author__ = "Caio Marcello"
+__version__ = "0.0.2"
+__author__ = "Caio Curitiba Marcellos"
 __author_email__ = "caiocuritiba@gmail.com"
 __website__ = "https://github.com/caiofcm/rfpython"
 __copyright__ = "Copyright (c) 2013-2020, {} <{}>".format(__author__, __author_email__)
