@@ -2,17 +2,38 @@
 
 A simple tool to run (or debug) a python function inside a python script from the command line.
 
+![](rf_python_usage.gif)
+
 ### Usage
 
 ``` 
 rfpython python-file function-name
 ``` 
 
-### USing VSCode Debugger:
+### Using VSCode Debugger:
 
 ``` 
 rfpython python-file function-name --debugger
 ``` 
+
+With a remote attach configuration:
+
+
+```
+    {
+        "name": "Python: Remote Attach",
+        "type": "python",
+        "request": "attach",
+        "port": 5678,
+        "host": "localhost",
+        "pathMappings": [
+            {
+                "localRoot": "${workspaceFolder}",
+                "remoteRoot": "."
+            }
+        ]
+    }
+```
 
 ### Installation
 

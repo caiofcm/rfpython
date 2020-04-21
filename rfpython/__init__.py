@@ -60,7 +60,7 @@ def main():
     parser.add_argument("function", type=str, help="Python function")
     parser.add_argument("--debugger", action='store_true', help="Use VSCode Debugger")
     args = parser.parse_args()
-    print(args)
+    
     if args.debugger and (not DEBUGGER_LOADED):
         print('Please install ptvsd for vscode debugging.')
 
