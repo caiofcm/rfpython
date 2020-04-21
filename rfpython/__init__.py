@@ -1,9 +1,20 @@
+import argparse
+import os
+import subprocess
+
 from .__about__ import __author__, __author_email__, __version__, __website__
 
-import subprocess
-import os
-import argparse
-
+try:
+    import ptvsd
+    DEBUGGER_LOADED = True
+    def start_debugger(timeout_sec=None):
+        if not ptvsd.is_attached():
+            # 5678 is the default attach port in the VS Code debug configurations
+            print("Waiting for debugger attach from VsCode")
+            ptvsd.enable_attach(address=('localhost', 5678), redirect_output=True)
+            ptvsd.wait_for_attach(timeout_sec)
+except ImportError:
+    DEBUGGER_LOADED = False
 
 def dir_logic(pyfile):
     dirname = os.path.dirname(pyfile)
@@ -16,10 +27,26 @@ def dir_logic(pyfile):
     return cmd
 
 
-def run(pyfile, function):
+def run(pyfile, function, debugger=False):
 
     cmd = dir_logic(pyfile)
     base_file_name = os.path.basename(pyfile).split(".")[0]
+
+    if debugger:
+        # start_debugger()
+        cmd_db = """
+import ptvsd
+def start_debugger(timeout_sec=None):
+    if not ptvsd.is_attached():
+        # 5678 is the default attach port in the VS Code debug configurations
+        print("Waiting for debugger attach from VsCode")
+        ptvsd.enable_attach(address=('localhost', 5678))
+        ptvsd.wait_for_attach(timeout_sec)
+start_debugger()
+"""
+        print('Using debugger mode')
+        cmd += cmd_db
+    
 
     command = cmd + "import {0}; {0}.{1}()".format(base_file_name, function)
 
@@ -28,12 +55,16 @@ def run(pyfile, function):
 
 def main():
 
-    parser = argparse.ArgumentParser(description="Videos to images")
+    parser = argparse.ArgumentParser(description="Run apython functions inside a file from the command line")
     parser.add_argument("pyfile", type=str, help="Python file")
     parser.add_argument("function", type=str, help="Python function")
+    parser.add_argument("--debugger", action='store_true', help="Use VSCode Debugger")
     args = parser.parse_args()
+    print(args)
+    if args.debugger and (not DEBUGGER_LOADED):
+        print('Please install ptvsd for vscode debugging.')
 
-    run(args.pyfile, args.function)
+    run(args.pyfile, args.function, args.debugger)
 
     return
 

@@ -1,11 +1,17 @@
 # rfpython: run python function
 
-A simple tool to run a python function inside a python script from the command.
+A simple tool to run (or debug) a python function inside a python script from the command line.
 
 ### Usage
 
 ``` 
 rfpython python-file function-name
+``` 
+
+### USing VSCode Debugger:
+
+``` 
+rfpython python-file function-name --debugger
 ``` 
 
 ### Installation
