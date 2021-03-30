@@ -58,7 +58,7 @@ def main():
     parser = argparse.ArgumentParser(description="Run apython functions inside a file from the command line")
     parser.add_argument("pyfile", type=str, help="Python file")
     parser.add_argument("function", type=str, help="Python function")
-    parser.add_argument("--debugger", action='store_true', help="Use VSCode Debugger")
+    parser.add_argument("-b", "--debugger", action='store_true', help="Use VSCode Debugger")
     args = parser.parse_args()
     
     if args.debugger and (not DEBUGGER_LOADED):
